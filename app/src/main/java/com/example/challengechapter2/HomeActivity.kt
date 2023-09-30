@@ -1,15 +1,11 @@
-package com.example.challengechapter2.presentation
+package com.example.challengechapter2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
-import android.widget.Toast
 import androidx.core.content.ContextCompat
-import com.example.challengechapter2.R
 import com.example.challengechapter2.databinding.ActivityHomeBinding
-import java.util.Objects
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -26,9 +22,11 @@ class HomeActivity : AppCompatActivity() {
     fun bindEditTextWithPrefix() {
         binding.etCos.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
             }
 
             override fun afterTextChanged(s: Editable?) {
