@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.core.content.ContextCompat
 import com.example.challengechapter2.databinding.ActivityHomeBinding
 
@@ -17,6 +18,7 @@ class HomeActivity : AppCompatActivity() {
         bindEditTextWithPrefix()
         bindCardViewWithEditText()
         setRadioButtonCheck()
+        setTotalAmount()
     }
 
     fun bindEditTextWithPrefix() {
@@ -113,5 +115,33 @@ class HomeActivity : AppCompatActivity() {
             binding.cvGood.isChecked = false
             binding.rbGood.isChecked = false
         }
+    }
+
+    fun setTotalAmount(){
+        binding.btnCalculate.setOnClickListener {
+            val etCos = binding.etCos.text.toString().replace("Rp ", "")
+            val cosAmount = etCos.toInt()
+
+            val serviceType = when {
+                binding.cvAmazing.isChecked -> cvAmazing(cosAmount)
+                binding.cvGood.isChecked -> cvGood(cosAmount)
+                binding.cvOk.isChecked -> cvOk(cosAmount)
+                else -> cvOk(cosAmount)
+            }
+
+            binding.tvTipamount.text = "Rp $serviceType"
+        }
+    }
+
+    fun cvAmazing(cosAmount: Int): Int {
+        return (cosAmount * 0.2).toInt()
+    }
+
+    fun cvGood(cosAmount: Int): Int {
+        return (cosAmount * 0.18).toInt()
+    }
+
+    fun cvOk(cosAmount: Int): Int {
+        return (cosAmount * 0.15).toInt()
     }
 }
